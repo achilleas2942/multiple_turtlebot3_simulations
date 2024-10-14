@@ -7,7 +7,6 @@
   <arg name="world_name" default="basic"/>
   <arg name="enable_logging" default="false"/>
   <arg name="enable_ground_truth" default="true"/>
-  <arg name="log_file" default="$(arg uav_name)"/>
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
   <arg name="paused" default="false"/>
@@ -61,7 +60,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="2"/>
       <arg name="y" value="2"/>
       <arg name="z" value="0.1"/>
@@ -81,7 +79,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="2"/>
       <arg name="y" value="-2"/>
       <arg name="z" value="0.1"/>
@@ -101,7 +98,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="-2"/>
       <arg name="y" value="2"/>
       <arg name="z" value="0.1"/>
@@ -121,7 +117,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="-2"/>
       <arg name="y" value="-2"/>
       <arg name="z" value="0.1"/>
@@ -141,7 +136,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="4"/>
       <arg name="y" value="0"/>
       <arg name="z" value="0.1"/>
@@ -161,7 +155,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="-4"/>
       <arg name="y" value="0"/>
       <arg name="z" value="0.1"/>
@@ -181,7 +174,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="0"/>
       <arg name="y" value="4"/>
       <arg name="z" value="0.1"/>
@@ -201,7 +193,6 @@
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="log_file"/>
       <arg name="x" value="0"/>
       <arg name="y" value="-4"/>
       <arg name="z" value="0.1"/>
