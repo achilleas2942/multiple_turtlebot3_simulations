@@ -57,11 +57,11 @@
   <!-- UAV Spawns (5 UAVs at different positions) -->
   <group ns="uav1">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav1"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav1_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="2"/>
       <arg name="y" value="2"/>
       <arg name="z" value="0.1"/>
@@ -76,11 +76,11 @@
 
   <group ns="uav2">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav2"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav2_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="2"/>
       <arg name="y" value="-2"/>
       <arg name="z" value="0.1"/>
@@ -95,11 +95,11 @@
 
   <group ns="uav3">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav3"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav3_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="-2"/>
       <arg name="y" value="2"/>
       <arg name="z" value="0.1"/>
@@ -114,11 +114,11 @@
 
   <group ns="uav4">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav4"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav4_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="-2"/>
       <arg name="y" value="-2"/>
       <arg name="z" value="0.1"/>
@@ -133,11 +133,11 @@
 
   <group ns="uav5">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav5"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav5_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="4"/>
       <arg name="y" value="0"/>
       <arg name="z" value="0.1"/>
@@ -152,11 +152,11 @@
 
   <group ns="uav6">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav6"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav6_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="-4"/>
       <arg name="y" value="0"/>
       <arg name="z" value="0.1"/>
@@ -171,11 +171,11 @@
 
   <group ns="uav7">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav7"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav7_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="0"/>
       <arg name="y" value="4"/>
       <arg name="z" value="0.1"/>
@@ -190,11 +190,11 @@
 
   <group ns="uav8">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="uav8"/>
+      <arg name="mav_name" value="pelican"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
-      <arg name="log_file" value="uav8_log"/>
+      <arg name="log_file" value="log_file"/>
       <arg name="x" value="0"/>
       <arg name="y" value="-4"/>
       <arg name="z" value="0.1"/>
