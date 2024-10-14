@@ -8,7 +8,7 @@ cd /root/catkin_ws/src
 if [ -d "turtlebot3_simulations" ]; then
     cd turtlebot3_simulations && git pull && cd ..
 else
-    git clone https://github.com/achilleas2942/multiple_turtlebot3_simulations.git
+    git clone https://github.com/achilleas2942/turtlebot3_simulations.git
 fi
 
 # Build the workspace

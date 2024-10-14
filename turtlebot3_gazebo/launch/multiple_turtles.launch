@@ -13,7 +13,7 @@
       <arg name="debug" value="false"/>
     </include>
   
-    <param name="robot_description" command="$(find xacro)/xacro --inorder /root/catkin_ws/src/multiple_turtlebot3_simulations/turtlebot3_gazebo/models/turtlebot3_waffle_pi/turtlebot3_waffle_pi.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_waffle_pi/turtlebot3_waffle_pi.urdf.xacro" />
   
     <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
   </launch>
