@@ -1,62 +1,210 @@
 <launch>
-    <!-- Arguments for TurtleBot3 -->
-    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-    <arg name="x_pos" default="0.0"/>
-    <arg name="y_pos" default="0.0"/>
-    <arg name="z_pos" default="0.0"/>
-  
-    <!-- Arguments for UAV (Pelican) -->
-    <arg name="mav_name" default="pelican"/>
-    <arg name="controller_name" default="vel"/>
-    <arg name="world_name" default="basic"/>
-    <arg name="enable_logging" default="false"/>
-    <arg name="enable_ground_truth" default="true"/>
-    <arg name="log_file" default="$(arg mav_name)"/>
-    <arg name="debug" default="false"/>
-    <arg name="gui" default="true"/>
-    <arg name="paused" default="false"/>
-    <arg name="verbose" default="false"/>
-  
-    <!-- Environment Variables for UAV (Pelican) -->
-    <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models:$(find summer_school_world)/models"/>
-    <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find summer_school_world)/worlds:$(find rotors_gazebo)/resource:$(find rotors_gazebo)/models:$(find summer_school_world)/resources:$(find summer_school_world)/models"/>
-  
-    <!-- Include Gazebo empty world launch (shared by both) -->
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find summer_school_world)/worlds/$(arg world_name).world"/>
-      <arg name="paused" value="$(arg paused)"/>
-      <arg name="use_sim_time" value="true"/>
-      <arg name="gui" value="$(arg gui)"/>
-      <arg name="headless" value="false"/>
-      <arg name="debug" value="$(arg debug)"/>
+  <!-- Arguments for TurtleBots -->
+  <arg name="turtlebot_model" default="$(env TURTLEBOT3_MODEL)" doc="TurtleBot model type [burger, waffle, waffle_pi]" />
+
+  <!-- Arguments for UAVs -->
+  <arg name="uav_name" default="pelican"/>
+  <arg name="controller_name" default="vel"/>
+  <arg name="world_name" default="basic"/>
+  <arg name="enable_logging" default="false"/>
+  <arg name="enable_ground_truth" default="true"/>
+  <arg name="log_file" default="$(arg uav_name)"/>
+  <arg name="debug" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="false"/>
+  <arg name="verbose" default="false"/>
+
+  <!-- Environment Variables for UAV (Pelican) -->
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models:$(find summer_school_world)/models"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find summer_school_world)/worlds:$(find rotors_gazebo)/resource:$(find rotors_gazebo)/models:$(find summer_school_world)/resources:$(find summer_school_world)/models"/>
+
+  <!-- Include Gazebo empty world launch -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find summer_school_world)/worlds/$(arg world_name).world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- TurtleBot Spawns (5 TurtleBots) -->
+  <group ns="turtlebot1">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot1 -x 0 -y 0 -z 0 -param robot_description" />
+  </group>
+
+  <group ns="turtlebot2">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot2 -x 2 -y 0 -z 0 -param robot_description" />
+  </group>
+
+  <group ns="turtlebot3">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3 -x -2 -y 0 -z 0 -param robot_description" />
+  </group>
+
+  <group ns="turtlebot4">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot4 -x 0 -y 2 -z 0 -param robot_description" />
+  </group>
+
+  <group ns="turtlebot5">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot5 -x 0 -y -2 -z 0 -param robot_description" />
+  </group>
+
+  <!-- UAV Spawns (5 UAVs at different positions) -->
+  <group ns="uav1">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav1"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav1_log"/>
+      <arg name="x" value="2"/>
+      <arg name="y" value="2"/>
+      <arg name="z" value="0.1"/>
     </include>
-  
-    <!-- TurtleBot3 Robot Description and Spawn -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_waffle_pi/turtlebot3_waffle_pi.urdf.xacro" />
-  
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
-  
-    <!-- UAV (Pelican) Group -->
-    <group ns="$(arg mav_name)">
-      <!-- Spawn the UAV model -->
-      <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
-        <arg name="mav_name" value="$(arg mav_name)" />
-        <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo" />
-        <arg name="enable_logging" value="$(arg enable_logging)" />
-        <arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
-        <arg name="log_file" value="$(arg log_file)"/>
-      </include>
-  
-      <!-- UAV Controller Node -->
-      <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-        <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_$(arg mav_name).yaml" />
-        <rosparam command="load" file="$(find rotors_gazebo)/resource/$(arg mav_name).yaml" />
-        <remap from="odom_msg" to="odometry_sensor1/odometry" />
-        <remap from="traj_msg" to="command/trajectory" />
-      </node>
-  
-      <!-- Robot State Publisher for UAV -->
-      <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-    </group>
-  
-  </launch>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav1.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav1.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+  <group ns="uav2">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav2"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav2_log"/>
+      <arg name="x" value="2"/>
+      <arg name="y" value="-2"/>
+      <arg name="z" value="0.1"/>
+    </include>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav2.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav2.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+  <group ns="uav3">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav3"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav3_log"/>
+      <arg name="x" value="-2"/>
+      <arg name="y" value="2"/>
+      <arg name="z" value="0.1"/>
+    </include>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav3.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav3.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+  <group ns="uav4">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav4"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav4_log"/>
+      <arg name="x" value="-2"/>
+      <arg name="y" value="-2"/>
+      <arg name="z" value="0.1"/>
+    </include>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav4.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav4.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+  <group ns="uav5">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav5"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav5_log"/>
+      <arg name="x" value="4"/>
+      <arg name="y" value="0"/>
+      <arg name="z" value="0.1"/>
+    </include>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav5.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav5.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+  <group ns="uav6">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav6"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav6_log"/>
+      <arg name="x" value="-4"/>
+      <arg name="y" value="0"/>
+      <arg name="z" value="0.1"/>
+    </include>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav6.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav6.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+  <group ns="uav7">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav7"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav7_log"/>
+      <arg name="x" value="0"/>
+      <arg name="y" value="4"/>
+      <arg name="z" value="0.1"/>
+    </include>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav7.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav7.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+  <group ns="uav8">
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="uav8"/>
+      <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
+      <arg name="enable_logging" value="$(arg enable_logging)"/>
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
+      <arg name="log_file" value="uav8_log"/>
+      <arg name="x" value="0"/>
+      <arg name="y" value="-4"/>
+      <arg name="z" value="0.1"/>
+    </include>
+    <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav8.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav8.yaml"/>
+      <remap from="odom_msg" to="odometry_sensor1/odometry"/>
+      <remap from="traj_msg" to="command/trajectory"/>
+    </node>
+  </group>
+
+</launch>
