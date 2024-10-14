@@ -67,8 +67,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav1.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav1.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -86,8 +86,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav2.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav2.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -105,8 +105,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav3.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav3.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -124,8 +124,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav4.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav4.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -143,8 +143,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav5.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav5.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -162,8 +162,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav6.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav6.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -181,8 +181,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav7.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav7.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -200,8 +200,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_uav8.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/uav8.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
