@@ -1,20 +1,70 @@
 <launch>
-    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-    <arg name="x_pos" default="0.0"/>
-    <arg name="y_pos" default="0.0"/>
-    <arg name="z_pos" default="0.0"/>
-  
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
-      <arg name="paused" value="false"/>
-      <arg name="use_sim_time" value="true"/>
-      <arg name="gui" value="true"/>
-      <arg name="headless" value="false"/>
-      <arg name="debug" value="false"/>
-    </include>
-  
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_waffle_pi/turtlebot3_waffle_pi.urdf.xacro" />
-  
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
-  </launch>
+  <!-- Argument for the TurtleBots -->
+  <arg name="num_robots" default="1" doc="Number of TurtleBots to spawn"/>
+  <arg name="turtlebot_model" default="$(env TURTLEBOT3_MODEL)" doc="TurtleBot model type [burger, waffle, waffle_pi]" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- Spawn TurtleBot 1 -->
+  <group if="$(eval arg('num_robots') >= 1)" ns="turtlebot1">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot1 -x 0 -y 0 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 2 -->
+  <group if="$(eval arg('num_robots') >= 2)" ns="turtlebot2">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot2 -x 2 -y 0 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 3 -->
+  <group if="$(eval arg('num_robots') >= 3)" ns="turtlebot3">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3 -x -2 -y 0 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 4 -->
+  <group if="$(eval arg('num_robots') >= 4)" ns="turtlebot4">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot4 -x 0 -y 2 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 5 -->
+  <group if="$(eval arg('num_robots') >= 5)" ns="turtlebot5">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot5 -x 0 -y -2 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 6 -->
+  <group if="$(eval arg('num_robots') >= 6)" ns="turtlebot6">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot6 -x 2 -y 2 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 7 -->
+  <group if="$(eval arg('num_robots') >= 7)" ns="turtlebot7">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot7 -x 2 -y -2 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 8 -->
+  <group if="$(eval arg('num_robots') >= 8)" ns="turtlebot8">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot8 -x -2 -y 2 -z 0 -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 9 -->
+  <group if="$(eval arg('num_robots') >= 9)" ns="turtlebot9">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_gazebo)/models/turtlebot3_$(arg turtlebot_model)/turtlebot3_$(arg turtlebot_model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot9 -x -2 -y -2 -z 0 -param robot_description" />
+  </group>
+
+</launch>
   
