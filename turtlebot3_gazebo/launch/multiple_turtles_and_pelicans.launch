@@ -12,7 +12,7 @@
   <arg name="paused" default="false"/>
   <arg name="verbose" default="false"/>
 
-  <!-- Environment Variables for UAV (Pelican) -->
+  <!-- Environment Variables for UAV (hummingbird) -->
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models:$(find summer_school_world)/models"/>
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find summer_school_world)/worlds:$(find rotors_gazebo)/resource:$(find rotors_gazebo)/models:$(find summer_school_world)/resources:$(find summer_school_world)/models"/>
 
@@ -56,7 +56,7 @@
   <group ns="uav1">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav1"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -65,8 +65,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -75,7 +75,7 @@
   <group ns="uav2">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav2"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -84,8 +84,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -94,7 +94,7 @@
   <group ns="uav3">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav3"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -103,8 +103,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -113,7 +113,7 @@
   <group ns="uav4">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav4"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -122,8 +122,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -132,7 +132,7 @@
   <group ns="uav5">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav5"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -141,8 +141,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -151,7 +151,7 @@
   <group ns="uav6">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav6"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -160,8 +160,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -170,7 +170,7 @@
   <group ns="uav7">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav7"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -179,8 +179,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
@@ -189,7 +189,7 @@
   <group ns="uav8">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="namespace" value="uav8"/>
-      <arg name="mav_name" value="pelican"/>
+      <arg name="mav_name" value="hummingbird"/>
       <arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo"/>
       <arg name="enable_logging" value="$(arg enable_logging)"/>
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)"/>
@@ -198,8 +198,8 @@
       <arg name="z" value="0.1"/>
     </include>
     <node name="position_controller_node" pkg="summer_school_world" type="summer_school_world_$(arg controller_name)_node" output="screen">
-      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_pelican.yaml"/>
-      <rosparam command="load" file="$(find rotors_gazebo)/resource/pelican.yaml"/>
+      <rosparam command="load" file="$(find summer_school_world)/resources/$(arg controller_name)_hummingbird.yaml"/>
+      <rosparam command="load" file="$(find rotors_gazebo)/resource/hummingbird.yaml"/>
       <remap from="odom_msg" to="odometry_sensor1/odometry"/>
       <remap from="traj_msg" to="command/trajectory"/>
     </node>
