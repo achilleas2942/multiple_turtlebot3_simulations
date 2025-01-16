@@ -365,4 +365,11 @@
   </joint>
   <link name="camera_rgb_optical_frame"/>
 
+
+  <gazebo reference="disc">
+    <material>Gazebo/Orange</material> 
+      <mu1>4.01</mu1>
+      <mu2>4.01</mu2>
+  </gazebo>
+
 </robot>
