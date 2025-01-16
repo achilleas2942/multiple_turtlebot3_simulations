@@ -33,10 +33,10 @@
   <arg name="third_tb3_z_pos" default=" 0.0"/>
   <arg name="third_tb3_yaw"   default=" 0.0"/>
 
-   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models:$(find ss_workshop)/models"/>
-  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find ss_workshop)/worlds:$(find rotors_gazebo)/resource:$(find rotors_gazebo)/models:$(find ss_workshop)/resources:$(find rotors_gazebo)/models"/>
+   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find rotors_gazebo)/resource:$(find rotors_gazebo)/models::$(find rotors_gazebo)/models"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find ss_workshop)/worlds/$(arg world_name).world" />
+    <arg name="world_name" value="$(find rotors_gazebo)/worlds/$(arg world_name).world" />
     <arg name="debug" value="$(arg debug)" />
     <arg name="paused" value="$(arg paused)" />
     <arg name="gui" value="$(arg gui)" />
@@ -44,7 +44,7 @@
   </include>
 
   <group ns = "$(arg first_tb3)">
-    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_gazebo)/urdf/turtlebot3_waffle_pi.urdf.xacro" />
       <param name="tf_prefix" value="$(arg first_tb3)" />
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
@@ -56,7 +56,7 @@
   </group>
 
   <group ns = "$(arg second_tb3)">
-    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_gazebo)/urdf/turtlebot3_waffle_pi.urdf.xacro" />
       <param name="tf_prefix" value="$(arg second_tb3)" />
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
@@ -68,7 +68,7 @@
   </group>
 
   <group ns = "$(arg third_tb3)">
-    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_gazebo)/urdf/turtlebot3_waffle_pi.urdf.xacro" />
       <param name="tf_prefix" value="$(arg third_tb3)" />
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
