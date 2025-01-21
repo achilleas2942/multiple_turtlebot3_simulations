@@ -103,7 +103,7 @@
       <arg name="enable_logging" value="$(arg enable_logging)" />
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
       <arg name="x" default="1.5"/>
-      <arg name="y" default="0.5"/>
+      <arg name="y" default="1.0"/>
       <arg name="z" default="0.1"/>
     </include>
 
@@ -118,7 +118,7 @@
       <arg name="enable_logging" value="$(arg enable_logging)" />
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
       <arg name="x" default="1.5"/>
-      <arg name="y" default="-0.5"/>
+      <arg name="y" default="-1.0"/>
       <arg name="z" default="0.1"/>
     </include>
 
