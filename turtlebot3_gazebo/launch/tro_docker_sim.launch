@@ -14,7 +14,7 @@
 
  
   <arg name="first_tb3"  default="demo_turtle1"/>
-  <arg name="second_tb3" default="demo_turtle4"/>
+  <arg name="second_tb3" default="demo_turtle2"/>
   <arg name="third_tb3"  default="demo_turtle3"/>
 
   <arg name="first_tb3_x_pos" default=" -1.0"/>
@@ -131,7 +131,7 @@
   <node pkg="tf" type="static_transform_publisher" name="world_odom_broadcaster" args="0 0 0 0 0 0 1 world odom 1000" />
   <node pkg="tf" type="static_transform_publisher" name="world_map_broadcaster" args="0 0 0 0 0 0 1 world map 1000" />
   <node pkg="tf" type="static_transform_publisher" name="odom_dt1odom_broadcaster" args="0 0 0 0 0 0 1 odom demo_turtle1/odom 1000" />
-  <node pkg="tf" type="static_transform_publisher" name="odom_dt4odom_broadcaster" args="0 0 0 0 0 0 1 odom demo_turtle4/odom 1000" />
+  <node pkg="tf" type="static_transform_publisher" name="odom_dt2odom_broadcaster" args="0 0 0 0 0 0 1 odom demo_turtle2/odom 1000" />
   <node pkg="tf" type="static_transform_publisher" name="odom_dt3odom_broadcaster" args="0 0 0 0 0 0 1 odom demo_turtle3/odom 1000" />
 
 
