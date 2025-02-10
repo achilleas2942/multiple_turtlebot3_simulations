@@ -117,6 +117,4 @@ echo "</launch>" >> $launch_file
 
 echo "Launch file $launch_file created successfully."
 
-roslaunch turtlebot3_gazebo sim_launch.py
-
 fi
